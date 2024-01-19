@@ -17,6 +17,10 @@ rl.on('line', (input) => {
   output.write(`${input}\n`);
 });
 
+rl.on('SIGINT', () => {
+  process.exit();
+});
+
 process.on('exit', () => {
   console.log('Thank you for the text! Goodbye!');
   rl.close();
