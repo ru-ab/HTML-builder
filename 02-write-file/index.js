@@ -11,17 +11,18 @@ const rl = readline.createInterface(stdin, stdout);
 console.log('Please enter some text:');
 rl.on('line', (input) => {
   if (input === 'exit') {
-    process.exit();
+    quit();
   }
 
   output.write(`${input}\n`);
 });
 
 rl.on('SIGINT', () => {
-  process.exit();
+  quit();
 });
 
-process.on('exit', () => {
+const quit = () => {
   console.log('Thank you for the text! Goodbye!');
   rl.close();
-});
+  process.exit();
+};
